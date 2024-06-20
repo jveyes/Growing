@@ -6,7 +6,6 @@ def contact_view(request):
     if request.method == 'POST':
         form = ContactForm(request.POST)
         if form.is_valid():
-            # Handle form processing here (e.g., save to database, send email)
             response_data = {'message': 'Form submitted successfully!'}
             return JsonResponse(response_data)
         else:
