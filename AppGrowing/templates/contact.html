@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form</title>
+    <script src="https://unpkg.com/htmx.org@1.4.1"></script>
+</head>
+<body>
+    <h1>Contact Us</h1>
+    <form id="contact-form" hx-post="{% url 'contact' %}" hx-target="#response" hx-swap="innerHTML">
+        {{ form.as_p }}
+        <button type="submit">Submit</button>
+    </form>
+    <div id="response"></div>
+</body>
+</html>

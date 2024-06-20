@@ -1,6 +1,16 @@
 from django.shortcuts import render
+from django.http import JsonResponse
+from .forms import ContactForm
 
-# Create your views here.
-
-#def index(request):
-#    return render(request, 'index.html')
+def contact_view(request):
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            # Handle form processing here (e.g., save to database, send email)
+            response_data = {'message': 'Form submitted successfully!'}
+            return JsonResponse(response_data)
+        else:
+            return JsonResponse({'errors': form.errors}, status=400)
+    else:
+        form = ContactForm()
+    return render(request, 'contact.html', {'form': form})
