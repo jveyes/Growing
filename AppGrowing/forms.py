@@ -1,6 +1,7 @@
 from django import forms
+from bootstrap5.forms import BootstrapFormMixin
 
-class ContactForm(forms.Form):
-    name = forms.CharField(max_length=100)
-    email = forms.EmailField()
-    message = forms.CharField(widget=forms.Textarea)
+class ContactForm(forms.Form, BootstrapFormMixin):
+    name = forms.CharField(label='Your Name')
+    email = forms.EmailField(label='Your Email')
+    message = forms.CharField(label='Your Message', widget=forms.Textarea)

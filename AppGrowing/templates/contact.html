@@ -1,20 +1,12 @@
 {% extends 'base.html' %}
 
-{% block title %}Contact{% endblock %}
+{% block title %}Contact Us{% endblock %}
 
 {% block content %}
 <h1>Contact Us</h1>
-<form id="contact-form" hx-post="{% url 'contact' %}" hx-target="#response" hx-swap="innerHTML">
-    <div class="mb-3">
-        {{ form.name.label_tag }}{{ form.name }}
-    </div>
-    <div class="mb-3">
-        {{ form.email.label_tag }}{{ form.email }}
-    </div>
-    <div class="mb-3">
-        {{ form.message.label_tag }}{{ form.message }}
-    </div>
+<form method="post" class="mb-3">
+    {% csrf_token %}
+    {{ form.as_bootstrap5 }}
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
-<div id="response"></div>
 {% endblock %}
